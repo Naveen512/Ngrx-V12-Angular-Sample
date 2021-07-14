@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="row justify-content-center">
+      <select
+        class="form-select form-select-md mt-3 w-50"
+        aria-label=".form-select-lg example"
+        [ngModel]="selectedAlbumId"
+        (ngModelChange)="albumChange($event)"
+      >
+        <option value="-1">Select Gallery Categroy</option>
+  
+        <option *ngFor="let id of albumIds$ | async" [value]="id">
+          {{ id }}
+        </option>
+      </select>
+    </div>
+    <div class="row">
+      <div *ngFor="let item of allGallery$ | async" class="card m-3" style="width: 18rem;">
+        <img src="{{item.thumbnailUrl}}" class="card-img-top" alt="..." style="height: 150px;">
+        <div class="card-body">
+          <h5 class="card-title">{{item.title}}</h5>
+          <div>Album Categroy Id {{item.albumId}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
